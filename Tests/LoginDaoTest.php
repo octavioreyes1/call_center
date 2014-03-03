@@ -13,7 +13,6 @@ class LoginDaoTest extends PHPUnit_Framework_TestCase
     {
         $this->pdo = new PDO($GLOBALS['db_dsn'], $GLOBALS['db_username'], $GLOBALS['db_password']);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->pdo->query("CREATE TABLE hello (what VARCHAR(50) NOT NULL)");
         $this->pdo->query("DROP TABLE IF EXISTS TipoUsuarios");
         $this->pdo->query("CREATE TABLE TipoUsuarios (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
