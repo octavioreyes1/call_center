@@ -58,7 +58,7 @@ class LoginDaoTest extends PHPUnit_Framework_TestCase
 	$conn = new Connection();
 	$loginDao = new LoginDao($conn->getConexion());   
 
-        $this->assertEquals(10, $loginDao->findLogin('Octavio', md5('reyes')));
+        $this->assertEquals(10, $loginDao->findLogin('Octavio', 'reyes'));
     }
 
 
