@@ -61,6 +61,15 @@ class LoginDaoTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(10, $loginDao->findLogin('Octavio', 'reyes'));
     }
 
+    public function testLoginDaoIncorrectUserOrPassword()
+    {
+	$conn = new Connection();
+	$loginDao = new LoginDao($conn->getConexion());   
+
+        $this->assertEquals(null, $loginDao->findLogin('UsuarioInventado', 'PasswordFalso'));
+    }
+
+
 
 }
 
