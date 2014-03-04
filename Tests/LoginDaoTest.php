@@ -49,6 +49,7 @@ class LoginDaoTest extends PHPUnit_Framework_TestCase
     public function tearDown()
     {
         $this->pdo->query("DROP TABLE Usuarios");
+        $this->pdo->query("DROP TABLE TipoUsuarios");
     }
 
 
