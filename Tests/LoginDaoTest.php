@@ -49,8 +49,8 @@ PRIMARY KEY (id)
 
     public function tearDown()
     {
-        $this->pdo->query("DROP TABLE IF EXISTS Usuarios");
-        $this->pdo->query("DROP TABLE IF EXISTS TipoUsuarios");
+       // $this->pdo->query("DROP TABLE IF EXISTS Usuarios");
+       // $this->pdo->query("DROP TABLE IF EXISTS TipoUsuarios");
     }
 
 
