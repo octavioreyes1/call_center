@@ -1,6 +1,7 @@
 <?php
 
    require_once 'classes/Connection.php';
+   require_once 'classes/LlamadasByUserDao.php';
 class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
 {
     /**
