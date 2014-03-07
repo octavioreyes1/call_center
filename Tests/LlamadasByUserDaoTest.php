@@ -1,7 +1,7 @@
 <?php
 
    require_once 'classes/Connection.php';
-class LoginDaoTest extends PHPUnit_Framework_TestCase
+class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var PDO
