@@ -73,7 +73,7 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
   CONSTRAINT fk_Extensiones_Dependencias1 FOREIGN KEY (idDependencia) REFERENCES Dependencias (id) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4096 DEFAULT CHARSET=latin1;
 ");
-        $this->pdo->query("INSERT INTO extensiones (id, numero, nombre, apellido, idDependencia) VALUES 
+        $this->pdo->query("INSERT INTO Extensiones (id, numero, nombre, apellido, idDependencia) VALUES 
                           (1, 3057, 'JOSE LUIS', 'ESPANA TELLES', 27),
                           (2, 3056, 'LUIS CARLOS ', 'GOMEZ MIJANGOS', 27),
                           (27, 22512, 'CHEREZADA', 'FRIAS SANCHEZ', 20),
@@ -161,7 +161,7 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
   CONSTRAINT fk_Usuarios_TipoUsuarios1 FOREIGN KEY (idTipoUsuario) REFERENCES TipoUsuarios (id) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 ");
-        $this->pdo->query("INSERT INTO usuarios (id, nombre, paterno, materno, username, password, fechaAlta, estatus, idTipoUsuario) VALUES 
+        $this->pdo->query("INSERT INTO Usuarios (id, nombre, paterno, materno, username, password, fechaAlta, estatus, idTipoUsuario) VALUES 
   (1, 'Chabela', 'Reyes', 'Escobedo', 'chabela', '765ba753b609d84b3813991fe23f81b3', '2014-03-02', 'activo', 2),
   (2, 'Octavio', 'Reyes', 'Pinedo', 'octavio', '765ba753b609d84b3813991fe23f81b3', '2014-03-03', 'activo', 1),
   (3, 'Juan', 'Perez', 'Perez', 'juan', '765ba753b609d84b3813991fe23f81b3', '2014-03-03', 'activo', 2),

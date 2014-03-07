@@ -16,10 +16,10 @@ class LlamadasByUserDao {
 
 function findLlamadasByUser($idUsuario) {           
       
-      $sql="select extensiones.numero as numero, llamadas.fecha fecha, dependencias.nombre dependencia from
-        llamadas inner join extensiones on llamadas.idExtension=extensiones.id
-                 inner join dependencias on dependencias.id=extensiones.idDependencia
-where llamadas.idUsuario=$idUsuario limit 0, 10";                 
+      $sql="select Extensiones.numero as numero, Llamadas.fecha fecha, Dependencias.nombre dependencia from
+        Llamadas inner join Extensiones on Llamadas.idExtension=Extensiones.id
+                 inner join Dependencias on Dependencias.id=extensiones.idDependencia
+where Llamadas.idUsuario=$idUsuario limit 0, 10";                 
       $result = mysqli_query($this->connDb, $sql);              
       
       return $result;
