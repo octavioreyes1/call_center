@@ -14,7 +14,7 @@ class LoginDaoTest extends PHPUnit_Framework_TestCase
         $this->pdo = new PDO($GLOBALS['db_dsn'], $GLOBALS['db_username'], $GLOBALS['db_password']);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $this->pdo->query("DROP TABLE IF EXISTS Usuarios");
+/*        $this->pdo->query("DROP TABLE IF EXISTS Usuarios");
         $this->pdo->query("CREATE TABLE Usuarios (
 id int(10) unsigned NOT NULL AUTO_INCREMENT,
 nombre varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
@@ -43,14 +43,14 @@ PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 ");
         $this->pdo->query("INSERT INTO TipoUsuarios VALUES (1,'Administrador'),(2,'Telefonista')");
-
+*/
 
     }
 
     public function tearDown()
     {
-        $this->pdo->query("DROP TABLE Usuarios");
-        $this->pdo->query("DROP TABLE TipoUsuarios");
+        $this->pdo->query("DROP TABLE IF EXISTS Usuarios");
+        $this->pdo->query("DROP TABLE IF EXISTS TipoUsuarios");
     }
 
 
@@ -59,7 +59,7 @@ PRIMARY KEY (id)
 $conn = new Connection();
 $loginDao = new LoginDao($conn->getConexion());
 
-        $this->assertEquals(10, $loginDao->findLogin('Octavio', 'reyes'));
+        $this->assertEquals(2, $loginDao->findLogin('octavio', 'perez'));
     }
 
     public function testLoginDaoIncorrectUserOrPassword()
