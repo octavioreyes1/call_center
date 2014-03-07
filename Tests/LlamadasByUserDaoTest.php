@@ -12,34 +12,7 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
     {
         $this->pdo = new PDO($GLOBALS['db_dsn'], $GLOBALS['db_username'], $GLOBALS['db_password']);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     
-// CREATE THE TABLE Extensiones        
-        $this->pdo->query("DROP TABLE IF EXISTS Extensiones");
-        $this->pdo->query("CREATE TABLE Extensiones (
-  id int(11) NOT NULL AUTO_INCREMENT,
-  numero int(11) DEFAULT NULL,
-  nombre varchar(60) DEFAULT NULL,
-  apellido varchar(45) DEFAULT NULL,
-  idDependencia int(10) unsigned NOT NULL,
-  PRIMARY KEY (id),
-  KEY fk_Extensiones_Dependencias1 (idDependencia),
-  CONSTRAINT fk_Extensiones_Dependencias1 FOREIGN KEY (idDependencia) REFERENCES Dependencias (id) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4096 DEFAULT CHARSET=latin1;
 
-");
-        $this->pdo->query("INSERT INTO extensiones (id, numero, nombre, apellido, idDependencia) VALUES 
-                          (1, 3057, 'JOSE LUIS', 'ESPANA TELLES', 27),
-                          (2, 3056, 'LUIS CARLOS ', 'GOMEZ MIJANGOS', 27),
-                          (27, 22512, 'CHEREZADA', 'FRIAS SANCHEZ', 20),
-                          (87, 10211, 'Omar', 'de Lara', 34),
-                          (92, 52125, 'Ana', 'Salinas', 22),
-                          (95, 26113, 'FAX IDP', 'Recepcion', 13),
-                          (98, 25245, 'Bernardo', 'Toribio del Muro', 11),
-                          (322, 22800, 'OPERADORA', '', 21),
-                          (351, 48112, 'Rocio del Carmen', 'Rosas Garcia', 18),
-                          (354, 77182, 'Marlene', 'Narro Martinez', 12),
-                          (602, 37110, 'Luis Ribogerto', 'Castaneda Espinoza', 31);
-");
 // CREATE THE TABLE Dependencias
         $this->pdo->query("DROP TABLE IF EXISTS Dependencias");
         $this->pdo->query("CREATE TABLE Dependencias (
@@ -83,6 +56,35 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
   (60, 'SUBSECRETARIA DE INFRAESTRUCTURA VIAL', 'activa', 'SIV'),
   (61, 'SNE', 'activa', 'SNE'),
   (62, 'ORT', 'activa', 'ORT');
+");
+        
+        
+        
+// CREATE THE TABLE Extensiones        
+        $this->pdo->query("DROP TABLE IF EXISTS Extensiones");
+        $this->pdo->query("CREATE TABLE Extensiones (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  numero int(11) DEFAULT NULL,
+  nombre varchar(60) DEFAULT NULL,
+  apellido varchar(45) DEFAULT NULL,
+  idDependencia int(10) unsigned NOT NULL,
+  PRIMARY KEY (id),
+  KEY fk_Extensiones_Dependencias1 (idDependencia),
+  CONSTRAINT fk_Extensiones_Dependencias1 FOREIGN KEY (idDependencia) REFERENCES Dependencias (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4096 DEFAULT CHARSET=latin1;
+");
+        $this->pdo->query("INSERT INTO extensiones (id, numero, nombre, apellido, idDependencia) VALUES 
+                          (1, 3057, 'JOSE LUIS', 'ESPANA TELLES', 27),
+                          (2, 3056, 'LUIS CARLOS ', 'GOMEZ MIJANGOS', 27),
+                          (27, 22512, 'CHEREZADA', 'FRIAS SANCHEZ', 20),
+                          (87, 10211, 'Omar', 'de Lara', 34),
+                          (92, 52125, 'Ana', 'Salinas', 22),
+                          (95, 26113, 'FAX IDP', 'Recepcion', 13),
+                          (98, 25245, 'Bernardo', 'Toribio del Muro', 11),
+                          (322, 22800, 'OPERADORA', '', 21),
+                          (351, 48112, 'Rocio del Carmen', 'Rosas Garcia', 18),
+                          (354, 77182, 'Marlene', 'Narro Martinez', 12),
+                          (602, 37110, 'Luis Ribogerto', 'Castaneda Espinoza', 31);
 ");
 
 // CREATE THE TABLE Llamadas
