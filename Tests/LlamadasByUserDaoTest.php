@@ -58,6 +58,39 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
   (62, 'ORT', 'activa', 'ORT');
 ");
         
+// CREATE TABLE TipoUsuarios
+        $this->pdo->query("DROP TABLE IF EXISTS TipoUsuarios");
+        $this->pdo->query("CREATE TABLE TipoUsuarios (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  descripcion varchar(80) COLLATE latin1_general_ci DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+");
+        $this->pdo->query("INSERT INTO TipoUsuarios VALUES (1,'Administrador'),(2,'Telefonista')");
+
+// CREATE THE TABLE Usuarios
+        $this->pdo->query("DROP TABLE IF EXISTS Usuarios");
+        $this->pdo->query("CREATE TABLE Usuarios (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  nombre varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
+  paterno varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
+  materno varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
+  username varchar(30) COLLATE latin1_general_ci DEFAULT NULL,
+  password varchar(32) COLLATE latin1_general_ci DEFAULT NULL,
+  fechaAlta date DEFAULT NULL,
+  estatus enum('activo','inactivo') COLLATE latin1_general_ci DEFAULT NULL,
+  idTipoUsuario int(10) unsigned NOT NULL,
+  PRIMARY KEY (id),
+  KEY fk_Usuarios_TipoUsuarios1 (idTipoUsuario),
+  CONSTRAINT fk_Usuarios_TipoUsuarios1 FOREIGN KEY (idTipoUsuario) REFERENCES TipoUsuarios (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+");
+        $this->pdo->query("INSERT INTO Usuarios (id, nombre, paterno, materno, username, password, fechaAlta, estatus, idTipoUsuario) VALUES 
+  (1, 'Chabela', 'Reyes', 'Escobedo', 'chabela', '765ba753b609d84b3813991fe23f81b3', '2014-03-02', 'activo', 2),
+  (2, 'Octavio', 'Reyes', 'Pinedo', 'octavio', '765ba753b609d84b3813991fe23f81b3', '2014-03-03', 'activo', 1),
+  (3, 'Juan', 'Perez', 'Perez', 'juan', '765ba753b609d84b3813991fe23f81b3', '2014-03-03', 'activo', 2),
+  (4, 'Luis', 'Perez', 'Perez', 'luis', '765ba753b609d84b3813991fe23f81b3', '2014-03-06', 'activo', 2);
+");      
         
         
 // CREATE THE TABLE Extensiones        
@@ -148,39 +181,7 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
   (44, '2014-04-05', 3, 602);
 ");
 
-// CREATE THE TABLE Usuarios
-        $this->pdo->query("DROP TABLE IF EXISTS Usuarios");
-        $this->pdo->query("CREATE TABLE Usuarios (
-  id int(10) unsigned NOT NULL AUTO_INCREMENT,
-  nombre varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
-  paterno varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
-  materno varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
-  username varchar(30) COLLATE latin1_general_ci DEFAULT NULL,
-  password varchar(32) COLLATE latin1_general_ci DEFAULT NULL,
-  fechaAlta date DEFAULT NULL,
-  estatus enum('activo','inactivo') COLLATE latin1_general_ci DEFAULT NULL,
-  idTipoUsuario int(10) unsigned NOT NULL,
-  PRIMARY KEY (id),
-  KEY fk_Usuarios_TipoUsuarios1 (idTipoUsuario),
-  CONSTRAINT fk_Usuarios_TipoUsuarios1 FOREIGN KEY (idTipoUsuario) REFERENCES TipoUsuarios (id) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-");
-        $this->pdo->query("INSERT INTO Usuarios (id, nombre, paterno, materno, username, password, fechaAlta, estatus, idTipoUsuario) VALUES 
-  (1, 'Chabela', 'Reyes', 'Escobedo', 'chabela', '765ba753b609d84b3813991fe23f81b3', '2014-03-02', 'activo', 2),
-  (2, 'Octavio', 'Reyes', 'Pinedo', 'octavio', '765ba753b609d84b3813991fe23f81b3', '2014-03-03', 'activo', 1),
-  (3, 'Juan', 'Perez', 'Perez', 'juan', '765ba753b609d84b3813991fe23f81b3', '2014-03-03', 'activo', 2),
-  (4, 'Luis', 'Perez', 'Perez', 'luis', '765ba753b609d84b3813991fe23f81b3', '2014-03-06', 'activo', 2);
-");      
         
-// CREATE TABLE TipoUsuarios
-        $this->pdo->query("DROP TABLE IF EXISTS TipoUsuarios");
-        $this->pdo->query("CREATE TABLE TipoUsuarios (
-  id int(10) unsigned NOT NULL AUTO_INCREMENT,
-  descripcion varchar(80) COLLATE latin1_general_ci DEFAULT NULL,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-");
-        $this->pdo->query("INSERT INTO TipoUsuarios VALUES (1,'Administrador'),(2,'Telefonista')");
              
 }
 
