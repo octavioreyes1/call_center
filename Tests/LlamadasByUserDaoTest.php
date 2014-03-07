@@ -23,7 +23,7 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 ");
-        $this->pdo->query("INSERT INTO dependencias (id, nombre, estatus, prefijo) VALUES 
+        $this->pdo->query("INSERT INTO Dependencias (id, nombre, estatus, prefijo) VALUES 
   (11, 'COORDINACION GENERAL JURIDICA', 'activa', 'CGJ'),
   (12, 'COORDINACION DE SISTEMAS DE INFORMACION', 'activa', 'CSI'),
   (13, 'INSTITUTO DE LA DEFENSORIA PUBLICA', 'activa', 'IDP'),
