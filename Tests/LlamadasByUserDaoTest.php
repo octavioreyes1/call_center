@@ -156,7 +156,7 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
 ) ENGINE=InnoDB AUTO_INCREMENT=4096 DEFAULT CHARSET=latin1;
 
 ");
-        $this->pdo->query("INSERT INTO extensiones (id, numero, nombre, apellido, idDependencia) VALUES 
+        $this->pdo->query("INSERT INTO Extensiones (id, numero, nombre, apellido, idDependencia) VALUES 
                           (1, 3057, 'JOSE LUIS', 'ESPANA TELLES', 27),
                           (2, 3056, 'LUIS CARLOS ', 'GOMEZ MIJANGOS', 27),
                           (27, 22512, 'CHEREZADA', 'FRIAS SANCHEZ', 20),
