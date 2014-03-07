@@ -91,11 +91,15 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
         $this->pdo->query("DROP TABLE IF EXISTS Llamadas");
         $this->pdo->query("CREATE TABLE Llamadas (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
-  nombre varchar(90) COLLATE latin1_general_ci DEFAULT NULL,
-  estatus enum('activa','inactiva') COLLATE latin1_general_ci DEFAULT NULL,
-  prefijo varchar(10) COLLATE latin1_general_ci DEFAULT NULL,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  fecha datetime DEFAULT NULL,
+  idUsuario int(10) unsigned NOT NULL,
+  idExtension int(11) NOT NULL,
+  PRIMARY KEY (id),
+  KEY fk_Llamadas_Usuarios1 (idUsuario),
+  KEY fk_Llamadas_Extensiones1 (idExtension),
+  CONSTRAINT fk_Llamadas_Usuarios1 FOREIGN KEY (idUsuario) REFERENCES Usuarios (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT fk_Llamadas_Extensiones1 FOREIGN KEY (idExtension) REFERENCES Extensiones (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=26482 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 ");
         $this->pdo->query("INSERT INTO Llamadas (id, fecha, idUsuario, idExtension) VALUES 
   (1, '2014-03-04', 1, 1),
