@@ -56,16 +56,16 @@ PRIMARY KEY (id)
 
     public function testLoginDao()
     {
-$conn = new Connection();
-$loginDao = new LoginDao($conn->getConexion());
+        $conn = new Connection();
+        $loginDao = new LoginDao($conn->getConexion());
 
         $this->assertEquals(2, $loginDao->findLogin('octavio', 'perez'));
     }
 
     public function testLoginDaoIncorrectUserOrPassword()
     {
-$conn = new Connection();
-$loginDao = new LoginDao($conn->getConexion());
+        $conn = new Connection();
+        $loginDao = new LoginDao($conn->getConexion());
 
         $this->assertEquals(null, $loginDao->findLogin('UsuarioInventado', 'PasswordFalso'));
     }

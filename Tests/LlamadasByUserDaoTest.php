@@ -188,11 +188,11 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        $this->pdo->query("DROP TABLE Extensiones");
-        $this->pdo->query("DROP TABLE Dependencias");
-        $this->pdo->query("DROP TABLE Llamadas");
-        $this->pdo->query("DROP TABLE Usuarios");
-        $this->pdo->query("DROP TABLE TipoUsuarios");
+        //$this->pdo->query("DROP TABLE Extensiones");
+        //$this->pdo->query("DROP TABLE Dependencias");
+        //$this->pdo->query("DROP TABLE Llamadas");
+        //$this->pdo->query("DROP TABLE Usuarios");
+        //$this->pdo->query("DROP TABLE TipoUsuarios");
     }
 
 
@@ -204,14 +204,14 @@ class LlamadasByUserDaoTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($llamadas));
     }
 
-/*  public function testLlamadasByUserDaoFakeId()
+    public function testLlamadasByUserDaoFakeId()
     {
 	$conn = new Connection();
  	$llamadasByUserDao = new LlamadasByUserDao($conn->getConexion());   
         $llamadas=$llamadasByUserDao->findLogin(234);
         $this->assertEquals(null, $llamadas);
     }
-*/
+
     
     
 }
