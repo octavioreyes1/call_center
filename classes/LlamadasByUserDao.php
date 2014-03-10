@@ -15,7 +15,8 @@ class LlamadasByUserDao {
    }
 
 function findLlamadasByUser($idUsuario) {                 
-      $sql="select Llamadas.fecha, Extensiones.numero from Llamadas inner join Extensiones on Llamadas.idExtension=Extensiones.id 
+      $sql="select Llamadas.fecha, Extensiones.numero, Dependencias.nombre as dependencia from Llamadas inner join Extensiones on Llamadas.idExtension=Extensiones.id
+                                                                    inner join Dependencias on Dependencias.id=extensiones.idDependencia
             where Llamadas.idUsuario=1";                 
       $result = mysqli_query($this->connDb, $sql);
       
