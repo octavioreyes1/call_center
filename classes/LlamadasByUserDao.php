@@ -28,9 +28,9 @@ function findLlamadasByUser($idUsuario) {
       }
 
       if (false===$result) {
-            $result=mysqli_error($this->$connDb);
+            $resultado=mysqli_error($this->$connDb);
       }
-      return $result;
+      return $resultado;
    }
    
   
