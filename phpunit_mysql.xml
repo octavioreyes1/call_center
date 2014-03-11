@@ -21,12 +21,4 @@
             </exclude>
         </whitelist>
     </filter>
-<selenium>
-<browser name="Firefox"
-browser="*firefox"
-host="localhost"
-port="4444"
-timeout="30000"/>
-</selenium>
-
 </phpunit>
