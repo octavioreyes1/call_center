@@ -1,18 +1,3 @@
-# Sample .travis.yml file:
-language: ruby
-
-rvm: # the Ruby versions to be used
-  - 2.1.0
-  - 2.0.0
-  - 1.9.3
-
-before_install:
-  - gem update # optional, update all gems
-  - gem install selenium-webdriver
-  - phantomjs --version # optional, output the phantomjs version
-
-script: ruby /test/test_home_page.rb
-
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
 
@@ -36,6 +21,15 @@ env:
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
   - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS callcenter;" -uroot; fi
+  
+ # Setup selenium
+  - "sh -e /etc/init.d/xvfb start"
+  - "export DISPLAY=:99.0"
+  - "wget http://selenium.googlecode.com/files/selenium-server-standalone-2.31.0.jar"
+  - "java -jar selenium-server-standalone-2.31.0.jar > /dev/null &"
+  - "pear channel-discover pear.phpunit.de"
+  - "pear install phpunit/PHPUnit_Selenium"
+  - sleep 5  
 
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
@@ -44,3 +38,5 @@ script: phpunit --configuration phpunit_$DB.xml --coverage-text
 # configure notifications (email, IRC, campfire etc)
 notifications:
   irc: "irc.freenode.org#yourfavouriteroomfortravis"
+
+ 
