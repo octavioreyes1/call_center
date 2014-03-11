@@ -5,6 +5,7 @@ class Example2 extends PHPUnit_Extensions_SeleniumTestCase
 {
 protected function setUp()
 {
+    $this->setBrowser("*firefox");
     $this->setBrowserUrl("http://google.com");
     $this->prepareTestSession();
 }
